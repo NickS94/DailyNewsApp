@@ -28,7 +28,7 @@ class ArticlesViewModel:ObservableObject{
                     apiKey: ApiKeys.apiKey)
                 
                 if let results = results{
-                    articlesList = results.articles
+                    articlesList = results.articles.filter{$0.author != nil}
                 }
                 
             }catch{

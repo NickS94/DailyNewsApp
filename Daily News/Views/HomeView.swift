@@ -14,9 +14,9 @@ struct HomeView: View {
     var body: some View {
         NavigationStack{
             List {
-                ForEach(viewModel.articlesList , id: \.title) { article in
+                ForEach(viewModel.articlesList, id: \.title) { article in
                     NavigationLink {
-                        Text("Details")
+                        ArticleDetailView(article: article, navigationTitle: viewModel.userInput)
                     } label: {
                         ArticleRow(article: article)
                     }

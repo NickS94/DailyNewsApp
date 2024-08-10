@@ -15,9 +15,7 @@ enum DateFormatterHelper {
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-
+        
         if let date = dateFormatter.date(from: dateString) {
             let outputFormatter = DateFormatter()
             outputFormatter.dateStyle = .medium

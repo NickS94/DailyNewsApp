@@ -13,15 +13,16 @@ class ArticlesViewModel:ObservableObject{
     private let client = NewsApiClient.sharedInstance
     
     @Published var articlesList:[Article] = []
-    @Published var userInput = "Netflix"
+    @Published var userInput = ""
     
-    func fetchArticles(){
+    func fetchArticlesByQuery(){
         Task{
             do{
                 let results:NewsArticlesResponse? = try await client.loadData(
                     scheme: Schemas.https.rawValue,
                     host: Host.newsApiHost.rawValue,
                     path: Paths.newsApiPathEverything.rawValue,
+                    query: Queries.querySearch.rawValue,
                     header: Headers.newsApiHeader.rawValue,
                     method: Methods.get.rawValue,
                     userInput: userInput,
@@ -29,6 +30,30 @@ class ArticlesViewModel:ObservableObject{
                 
                 if let results = results{
                     articlesList = results.articles.filter{$0.author != nil}
+                }
+                
+            }catch{
+                print(error)
+            }
+        }
+    }
+    
+    func fetchTopArticlesByCountry(){
+        Task{
+            do{
+                let results:NewsArticlesResponse? = try await client.loadData(
+                    scheme: Schemas.https.rawValue,
+                    host: Host.newsApiHost.rawValue,
+                    path: Paths.newsApiPathTopHeadlines.rawValue,
+                    query: Queries.queryCountry.rawValue,
+                    header: Headers.newsApiHeader.rawValue,
+                    method: Methods.get.rawValue,
+                    userInput: Countries.usa.rawValue,
+                    apiKey: ApiKeys.apiKey
+                )
+                
+               if let results = results {
+                   articlesList = results.articles.filter{$0.author != nil}
                 }
                 
             }catch{

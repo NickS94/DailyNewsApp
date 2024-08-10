@@ -23,14 +23,15 @@ struct HomeView: View {
                 }
             }
             .listStyle(.inset)
-            .navigationTitle("Home")
+            .navigationTitle("Todays Hot")
         }
-        .searchable(text: $viewModel.userInput)
+        .searchable(text: $viewModel.userInput,prompt: "Search by keyword")
         .onChange(of: viewModel.userInput, {
-            viewModel.fetchArticles()
+            viewModel.fetchArticlesByQuery()
+            viewModel.fetchTopArticlesByCountry()
         })
         .onAppear{
-            viewModel.fetchArticles()
+            viewModel.fetchTopArticlesByCountry()
         }
     }
 }

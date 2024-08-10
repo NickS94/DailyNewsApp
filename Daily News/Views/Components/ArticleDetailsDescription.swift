@@ -13,5 +13,6 @@ struct ArticleDetailsDescription: View {
         Text(article.description ?? "")
             .fontWeight(.semibold)
             .fontDesign(.serif)
+            .padding()
     }
 }

@@ -12,7 +12,18 @@ struct ContentView: View {
         TabView{
             HomeView()
                 .tabItem {
-                    Image(systemName: "newspaper")
+                    VStack{
+                        Image(systemName: "house")
+                        Text("Home")
+                    }
+                }
+            
+            NewsView()
+                .tabItem {
+                    VStack{
+                        Image(systemName: "newspaper")
+                        Text("News")
+                    }
                 }
         }
     }

@@ -15,9 +15,12 @@ class NewsApiClient{
         scheme:String,
         host:String,
         path:String,
+        query:String,
         header:String? = nil  ,
         method:String? = nil ,
         userInput:String? = nil ,
+        userSecondInput:String? = nil,
+        userThirdInput:String? = nil,
         apiKey:String? = nil )  async throws  -> T? {
             
             var urlComponents = URLComponents()
@@ -26,7 +29,9 @@ class NewsApiClient{
             urlComponents.path = path
             
             urlComponents.queryItems = [
-                   URLQueryItem(name: "q", value: userInput),
+                   URLQueryItem(name: query, value: userInput),
+                   URLQueryItem(name:Queries.dateFrom.rawValue,value: userSecondInput),
+                   URLQueryItem(name:Queries.dateTo.rawValue,value: userThirdInput),        
                ]
             
             guard let  url = urlComponents.url else{

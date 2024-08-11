@@ -9,6 +9,9 @@ import Foundation
 
 @MainActor
 class FilteredArticlesViewModel:ObservableObject{
+    
+    // MARK: -> Properties
+    
     private let client = ApiClient.sharedInstance
     
     @Published var filteredArticlesList:[Article] = [ ]
@@ -16,7 +19,9 @@ class FilteredArticlesViewModel:ObservableObject{
     @Published var userInputDateFrom  = Date.now
     @Published var userInputDateTo = Date.now
     
+    // MARK: -> Methods
     
+    // This function fetches the Articles by filtering a keyword and date from - to .
     func fetchFilteredArticles(){
         Task{
             do{

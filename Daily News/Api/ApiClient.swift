@@ -9,8 +9,10 @@ import Foundation
 
 class ApiClient{
     
+    // Class Singleton instance.
     static let sharedInstance = ApiClient()
     
+    // This function makes the API Call, in a generic way so it can be used for all the different API Calls also (Fully customisable) !.
     func loadData <T:Codable> (
         scheme:String,
         host:String,

@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ArticleDetailView: View {
+    
     let article:Article
     let navigationTitle:String
+    
     var body: some View {
         ScrollView {
             HeadlineDetails(article: article)

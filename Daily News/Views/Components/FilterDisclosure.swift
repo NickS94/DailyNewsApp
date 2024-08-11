@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct FilterDisclosure: View {
+    
     @ObservedObject var viewModel:FilteredArticlesViewModel
     @Binding var isExpanded:Bool
+    
     var body: some View {
+        
+        // I used this disclosure group to create a small dropdown menu for my filtering components.
         DisclosureGroup(
             isExpanded: $isExpanded,
             content: {

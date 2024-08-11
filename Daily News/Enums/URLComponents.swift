@@ -5,6 +5,7 @@
 //  Created by Nikos Stauropoulos on 09.08.24.
 //
 
+// This are enums builded from me so i can save all the URL components i need to make the call
 import Foundation
 
 enum Schemas:String{
@@ -29,7 +30,7 @@ enum Queries:String{
 }
 
 
-enum  Countries:String,CaseIterable{
+enum Countries:String,CaseIterable{
     case germany  = "de"
     case usa = "us"
     case england = "gb"
@@ -59,14 +60,9 @@ enum  Countries:String,CaseIterable{
     }
 }
 
-
-
 enum Categories:String,CaseIterable{
     case financeNews = "finance"
 }
-
-
-
 
 enum Methods:String{
     case get = "GET"

@@ -10,7 +10,7 @@ import SwiftUI
 struct DetailsImage: View {
     let article:Article
     var body: some View {
-        
+        // A lot of the API image urls was nil so i filtered them.
         if article.urlToImage != nil{
             AsyncImage(url: URL(string: article.urlToImage ?? "")){ Image in
                 Image

@@ -5,6 +5,9 @@
 //  Created by Nikos Stauropoulos on 10.08.24.
 //
 
+
+// This is a date formatter function generated from Chat GPT to help me with formatting the date in my views.
+
 import Foundation
 
 enum DateFormatterHelper {

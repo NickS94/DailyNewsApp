@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct HeadlineDetails: View {
+    
     let article:Article
+    
     var body: some View {
         VStack{
             Text(article.title ?? "")

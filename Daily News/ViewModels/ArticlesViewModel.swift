@@ -10,11 +10,17 @@ import Foundation
 @MainActor
 class ArticlesViewModel:ObservableObject{
     
+    // MARK: -> Properties
+    
     private let client = ApiClient.sharedInstance
     
     @Published var articlesList:[Article] = []
     @Published var userInput = ""
     @Published var userInputCountry:Countries = .usa
+    
+    // MARK: -> Methods
+    
+    // This function fetches the Articles by the search query.
     func fetchArticlesByQuery(){
         Task{
             do{
@@ -38,6 +44,7 @@ class ArticlesViewModel:ObservableObject{
         }
     }
     
+    // This function fetches the top headlines by country
     func fetchTopArticlesByCountry(){
         Task{
             do{

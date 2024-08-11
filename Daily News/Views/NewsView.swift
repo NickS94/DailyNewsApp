@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct NewsView: View {
+    
     @StateObject var viewModel = FilteredArticlesViewModel()
     @State var isExpanded = false
+    
     var body: some View {
-        
         NavigationStack{
             VStack{
                 FilterDisclosure(viewModel: viewModel, isExpanded: $isExpanded)
@@ -35,6 +36,6 @@ struct NewsView: View {
     }
 }
 
-#Preview {
-    NewsView()
-}
+//#Preview {
+//    NewsView()
+//}

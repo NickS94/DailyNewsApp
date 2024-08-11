@@ -7,9 +7,9 @@
 
 import Foundation
 
-class NewsApiClient{
+class ApiClient{
     
-    static let sharedInstance = NewsApiClient()
+    static let sharedInstance = ApiClient()
     
     func loadData <T:Codable> (
         scheme:String,
@@ -57,6 +57,8 @@ class NewsApiClient{
                 throw ApiErrors.unknownError
             }
             
+           
+            print(statusCode)
             switch statusCode{
             case 200:
                 do{

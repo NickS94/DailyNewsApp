@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 class FilteredArticlesViewModel:ObservableObject{
-    private let client = NewsApiClient.sharedInstance
+    private let client = ApiClient.sharedInstance
     
     @Published var filteredArticlesList:[Article] = [ ]
     @Published var userInputKeyword = ""

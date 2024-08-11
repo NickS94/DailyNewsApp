@@ -13,6 +13,14 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack{
+           
+                Picker("Select Country", selection: $viewModel.userInputCountry) {
+                        ForEach(Countries.allCases , id: \.fullName){coutry in
+                        Text(coutry.fullName).tag(coutry)
+                        }
+                }
+                .pickerStyle(.navigationLink)
+                .padding()
             List {
                 ForEach(viewModel.articlesList, id: \.title) { article in
                     NavigationLink {
@@ -23,16 +31,21 @@ struct HomeView: View {
                 }
             }
             .listStyle(.inset)
-            .navigationTitle("Todays Hot")
+            .navigationTitle("Todays Hot \(viewModel.userInputCountry.fullName)")
         }
         .searchable(text: $viewModel.userInput,prompt: "Search by keyword")
-        .onChange(of: viewModel.userInput, {
+        .onChange(of: viewModel.userInput) {
             viewModel.fetchArticlesByQuery()
+        }
+        .onChange(of: viewModel.userInputCountry) {
             viewModel.fetchTopArticlesByCountry()
-        })
+        }
         .onAppear{
             viewModel.fetchTopArticlesByCountry()
         }
     }
 }
 
+#Preview {
+    HomeView(viewModel: ArticlesViewModel())
+}

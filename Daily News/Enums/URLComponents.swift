@@ -44,9 +44,9 @@ enum  Countries:String,CaseIterable{
         case .germany:
             "Germany"
         case .usa:
-            "United States"
+            "U.S.A"
         case .england:
-            "United Kingdom"
+            "Britain"
         case .canada:
             "Canada"
         case .greece:

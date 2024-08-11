@@ -10,11 +10,11 @@ import Foundation
 @MainActor
 class ArticlesViewModel:ObservableObject{
     
-    private let client = NewsApiClient.sharedInstance
+    private let client = ApiClient.sharedInstance
     
     @Published var articlesList:[Article] = []
     @Published var userInput = ""
-    
+    @Published var userInputCountry:Countries = .usa
     func fetchArticlesByQuery(){
         Task{
             do{
@@ -48,7 +48,7 @@ class ArticlesViewModel:ObservableObject{
                     query: Queries.queryCountry.rawValue,
                     header: Headers.newsApiHeader.rawValue,
                     method: Methods.get.rawValue,
-                    userInput: Countries.usa.rawValue,
+                    userInput: userInputCountry.rawValue,
                     apiKey: ApiKeys.apiKey
                 )
                 
